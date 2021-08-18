@@ -1,0 +1,78 @@
+
+    <body class="bg-primary">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
+                                    <div class="card-body">
+                                        <form [formGroup]="signupForm">
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="email">Email</label>
+                                                <input [class.is-invalid]="warning.email != '' && submitted" class="form-control py-4" id="email" type="email" aria-describedby="emailHelp" placeholder="Enter email address" formControlName="email"  />
+                                                <div *ngIf="warning.email != '' && submitted">
+                                                    <small class="small text-danger">{{warning.email}}</small>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="username">Username</label>
+                                                <input [class.is-invalid]="warning.username != '' && submitted" class="form-control py-4" id="username" type="text" placeholder="User name" formControlName="username"/>
+                                                <div *ngIf="warning.username != '' && submitted">
+                                                    <small class="small text-danger">{{warning.username}}</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="password">Password</label>
+                                                <input [class.is-invalid]="warning.password != '' && submitted" class="form-control py-4" id="password" type="password" placeholder="Enter password" formControlName="password" />
+                                                <div *ngIf="warning.password != '' && submitted">
+                                                    <small class="small text-danger">{{warning.password}}</small>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="password2">Confirm Password</label>
+                                                <input [class.is-invalid]="warning.password2 != '' && submitted" class="form-control py-4" id="password2" type="password" placeholder="Confirm password" formControlName="password2" />
+                                                <div *ngIf="warning.password2 != '' && submitted">
+                                                    <small class="small text-danger">{{warning.password2}}</small>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <div class="text-danger text-center">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="form-group d-flex justify-content-center mt-4 mb-0">
+                                                <button class="btn btn-primary" (click)="onSubmit()">Create Account</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <div class="small"><a [routerLink]="['/login']">Have an account? Go to login</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <div id="layoutAuthentication_footer">
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Tue Nguyen 2021</div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
