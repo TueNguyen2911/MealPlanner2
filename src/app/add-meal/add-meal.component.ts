@@ -25,11 +25,15 @@ export class AddMealComponent implements OnInit {
   public foodForm: any; 
   public selectedImg: ImageSnippet;
   addOnBlur = true;
+  public username: string;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   tags: string[] = [];
 
   constructor(private _userService: UserService, private router: Router) { }
-
+  logOut() { 
+    this._userService.logOut();
+    window.location.reload();
+  }
   ngOnInit(): void {
     this.foodForm = new FormGroup({
       imgTemp: new FormControl(null, Validators.required),
@@ -48,6 +52,7 @@ export class AddMealComponent implements OnInit {
       user_id : new FormControl(this._userService.readToken()._id)
     }); 
     this.ingredients = [];
+    this.username = this._userService.readToken().username;
     console.log(this.foodForm)
   }
   get ingredientControls() {

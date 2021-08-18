@@ -39,11 +39,14 @@
                         <a class="nav-link" [routerLink]="['/meal-plan']" routerLinkActive="active"> 
                             <i class="fa fa-cutlery" aria-hidden="true"></i> {{'\u00A0'}} Your Meals
                         </a>
+                        <a class="nav-link" style="cursor: pointer;" (click)="logOut()"> 
+                            <i class="fa fa-sign-out" aria-hidden="true" ></i> {{'\u00A0'}} Log out
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-
+                    {{username}}
                 </div>
             </nav>
         </div>

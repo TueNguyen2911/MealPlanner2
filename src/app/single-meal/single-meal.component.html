@@ -43,11 +43,14 @@
                             <a class="nav-link" [routerLink]="['/meal-plan']"> 
                                 <i class="fa fa-cutlery" aria-hidden="true"></i> {{'\u00A0'}} Your Meals
                             </a>
+                            <a class="nav-link" style="cursor: pointer;" (click)="logOut()"> 
+                                <i class="fa fa-sign-out" aria-hidden="true" ></i> {{'\u00A0'}} Log out
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-
+                        {{username}}
                     </div>
                 </nav>
             </div>
@@ -126,8 +129,7 @@
                                                     </div>
                                                 </div>
                                                 <div style="float: right; display: inline">
-                                                    <div class="btn btn-outline-primary m-2">Edit</div> 
-                                                    <div class="btn btn-danger m-3">Delete</div>
+                                                    <div class="btn btn-danger m-3" (click)="deletePost()">Delete</div>
 
                                                 </div>
                                             </div>

@@ -9,6 +9,7 @@ import { UserService } from '../User.service';
 export class MealPlanComponent implements OnInit, OnDestroy {
   public navToggled = false;
   public foodPosts: Array<any>;
+  public username: string;
   public macro = {
     calories: null, 
     protein: null,
@@ -33,8 +34,12 @@ export class MealPlanComponent implements OnInit, OnDestroy {
       (err) => console.log(err)
     );
   }
-
+  logOut() { 
+    this._userService.logOut();
+    window.location.reload();
+  }
   ngOnInit(): void {
+    this.username = this._userService.readToken().username;
   }
   sideNavToggle(): void {
     this.navToggled = !this.navToggled;

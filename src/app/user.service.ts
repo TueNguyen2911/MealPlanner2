@@ -9,7 +9,7 @@ const helper = new JwtHelperService();
 
 @Injectable()
 export class UserService {
-  api_url: string = 'https://mealplanapi.herokuapp.com/api';//'http://localhost:8080/api';
+  api_url: string = 'http://localhost:8080/api';
   constructor(private http: HttpClient, private router: Router) { }
 
   public getToken(): string {
@@ -78,5 +78,8 @@ export class UserService {
   //sign-up
   addNewUser(signupForm: any) : Observable<any> {
     return this.http.post<any>(this.api_url + "/sign-up", signupForm);
+  }
+  deletePost(postId: any) : Observable<any> {
+    return this.http.delete<any>(this.api_url + `/deletePost/${postId}`); 
   }
 }
