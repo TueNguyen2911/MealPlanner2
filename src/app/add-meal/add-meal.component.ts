@@ -118,6 +118,7 @@ export class AddMealComponent implements OnInit {
       this.imgTemp2_Readonly = !this.imgTemp2_Readonly; 
     else if(imgInput.id == "imgTemp2")
       this.imgTemp1_Readonly = !this.imgTemp1_Readonly;
+    console.log(this.imgTemp1_Readonly, this.imgTemp2_Readonly)
 
   }
   addTag(event: MatChipInputEvent): void {
@@ -169,7 +170,8 @@ export class AddMealComponent implements OnInit {
               resolve('uploaded');
             },
             (err) => {
-              reject('failed');
+              console.log(err);
+              reject(err);
             })
         });
         
