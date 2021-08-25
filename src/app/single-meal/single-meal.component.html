@@ -72,7 +72,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="content">
-                                                    <div class="left pl-5">
+                                                    <div class="left">
                                                         <img class="img-fit" [src]="foodPost.img">
                                                         <br> <br> <br>
                                                         <label class="font-weight-bold">Ingredients</label>
@@ -93,7 +93,7 @@
                                                     <div class="right">
                                                         <div>
                                                             <div class="btn btn-primary" (click)="addToPlan()">Add to plan</div>
-                                                            <span *ngIf="msg" class="alert alert-success">{{msg}}!</span>
+                                                            <div *ngIf="msg" class="alert alert-success">{{msg}}!</div>
                                                         </div> 
                                                         <div class="mt-2">
                                                             Servings: {{foodPost.serving}} <br>
@@ -154,4 +154,3 @@
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
     </body>
-<p>single-meal works!</p>

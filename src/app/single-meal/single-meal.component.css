@@ -4140,10 +4140,22 @@ html {
 
 .left {
 	float: left;
-	width: 60%
+	width: 60%;
+	padding-left: 5px;
 }
 
 .right {
 	float: right;
 	width: 25%
+}
+@media only screen and (max-width: 600px) {
+	.left {
+		padding: 0
+	}
+	.right {
+		width: 35%;
+	}
+	.table-hover tbody tr td {
+		padding: 3px;
+	}
 }
