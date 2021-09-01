@@ -1520,13 +1520,13 @@ input[type=submit].btn-block {
 .nav-link {
 	display: block;
 	padding: .5rem 1rem;
-  text-decoration: none
+	text-decoration: none
 }
 
 .nav-link:focus,
 .nav-link:hover {
-  cursor: pointer;
-  text-decoration: none
+	cursor: pointer;
+	text-decoration: none
 }
 
 .navbar {
@@ -2217,10 +2217,6 @@ button.bg-dark:hover {
 	flex-shrink: 1!important
 }
 
-.justify-content-start {
-	justify-content: flex-start!important
-}
-
 .justify-content-center {
 	justify-content: center!important
 }
@@ -2237,9 +2233,6 @@ button.bg-dark:hover {
 	}
 	.flex-sm-shrink-1 {
 		flex-shrink: 1!important
-	}
-	.justify-content-sm-start {
-		justify-content: flex-start!important
 	}
 	.justify-content-sm-center {
 		justify-content: center!important
@@ -2259,9 +2252,6 @@ button.bg-dark:hover {
 	.flex-md-shrink-1 {
 		flex-shrink: 1!important
 	}
-	.justify-content-md-start {
-		justify-content: flex-start!important
-	}
 	.justify-content-md-center {
 		justify-content: center!important
 	}
@@ -2280,9 +2270,6 @@ button.bg-dark:hover {
 	.flex-lg-shrink-1 {
 		flex-shrink: 1!important
 	}
-	.justify-content-lg-start {
-		justify-content: flex-start!important
-	}
 	.justify-content-lg-center {
 		justify-content: center!important
 	}
@@ -2300,9 +2287,6 @@ button.bg-dark:hover {
 	}
 	.flex-xl-shrink-1 {
 		flex-shrink: 1!important
-	}
-	.justify-content-xl-start {
-		justify-content: flex-start!important
 	}
 	.justify-content-xl-center {
 		justify-content: center!important
@@ -3321,14 +3305,9 @@ html {
 .column2 {
 	flex: 30%
 }
-@media only screen and (max-width: 600px) {
-	.left {
-		padding: 0
-	}
-	.right {
-		width: 35%;
-	}
+
+@media only screen and (max-width:600px) {
 	.table-hover tbody tr td {
-		padding: 3px;
+		padding: 3px
 	}
 }
