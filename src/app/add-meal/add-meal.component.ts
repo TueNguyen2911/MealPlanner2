@@ -34,6 +34,7 @@ export class AddMealComponent implements OnInit {
     this._userService.logOut();
     window.location.reload();
   }
+
   ngOnInit(): void {
     this.foodForm = new FormGroup({
       imgTemp: new FormControl(null, Validators.required),
@@ -53,7 +54,20 @@ export class AddMealComponent implements OnInit {
     }); 
     this.ingredients = [];
     this.username = this._userService.readToken().username;
-    console.log(this.foodForm)
+    console.log(this.foodForm);
+    
+    // var allClasses = [];
+    // var allElements = document.querySelectorAll('*');
+    // for (var i = 0; i < allElements.length; i++) {
+    //   var classes = allElements[i].className.toString().split(/\s+/);
+    //   for (var j = 0; j < classes.length; j++) {
+    //     var cls = classes[j];
+    //     if (cls && allClasses.indexOf(cls) === -1)
+    //       allClasses.push(cls);
+    //   }
+    // }
+
+    // console.log(allClasses);
   }
   get ingredientControls() {
     return (<FormArray>this.foodForm.get('ingredients')).controls;
@@ -187,4 +201,5 @@ export class AddMealComponent implements OnInit {
     })
     
   }
+  
 }
