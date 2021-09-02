@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['../app.component.css', './login.component.css']
 })
 export class LoginComponent implements OnInit {
   public user: any;
@@ -27,6 +27,18 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.required)
     })
     this.user = new User();
+    var allClasses = [];
+    var allElements = document.querySelectorAll('*');
+    for (var i = 0; i < allElements.length; i++) {
+      var classes = allElements[i].className.toString().split(/\s+/);
+      for (var j = 0; j < classes.length; j++) {
+        var cls = classes[j];
+        if (cls && allClasses.indexOf(cls) === -1)
+          allClasses.push(cls);
+      }
+    }
+
+    console.log(allClasses);
   } 
   onSubmit() {
     this.submitted = true; 
