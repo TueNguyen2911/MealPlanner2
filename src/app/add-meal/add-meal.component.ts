@@ -10,7 +10,7 @@ import { Router } from '@angular/router'
 @Component({
   selector: 'app-add-meal',
   templateUrl: './add-meal.component.html',
-  styleUrls: ['./add-meal.component.css']
+  styleUrls: ['../app.component.css', './add-meal.component.css']
 })
 
 export class AddMealComponent implements OnInit {

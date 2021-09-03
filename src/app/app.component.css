@@ -35,7 +35,8 @@
 }
 .col,
 .col-md-6,
-.col-xl-3
+.col-xl-3,
+.col-xl-5,
 .col-xl-auto {
 	position: relative;
 	width: 100%;
@@ -66,6 +67,7 @@
 	flex: 0 0 50%;
 	max-width: 50%
 }
+.col-lg-7,
 .col-lg-6 {
 	position: relative;
 	width: 100%;
@@ -74,7 +76,10 @@
 }
 
 @media (min-width:992px) {
-
+	.col-lg-7{
+		flex: 0 0 58.3333333333%;
+		max-width: 58.3333333333%;
+	}
 	.col-lg-6 {
 		flex: 0 0 50%;
 		max-width: 50%
@@ -82,7 +87,10 @@
 }
 
 @media (min-width:1200px) {
-	
+	.col-xl-5 {
+		flex: 0 0 41.6666666667%;
+		max-width: 41.6666666667%
+	}
 	.col-xl-3 {
 		flex: 0 0 25%;
 		max-width: 25%
@@ -119,7 +127,9 @@ input {
 }
 
 h1,
-h3 {
+h3,
+h6 {
+	margin-top: 0;
 	margin-bottom: .5rem;
 	font-weight: 500;
 	line-height: 1.2
@@ -132,7 +142,9 @@ h1 {
 h3 {
 	font-size: 1.75rem
 }
-
+h6 {
+	font-size: 1rem
+}
 hr {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
@@ -158,8 +170,6 @@ small {
 .row {
 	display: flex;
 	flex-wrap: wrap;
-	margin-right: -.75rem;
-	margin-left: -.75rem
 }
 
 .col {
@@ -364,7 +374,8 @@ a.btn.disabled {
 	background-clip: border-box;
 	border: 1px solid rgba(0, 0, 0, .125);
 	border-radius: .25rem;
-	justify-content: center
+	justify-content: center;
+	opacity: .95;
 }
 
 .card>hr {
@@ -942,4 +953,98 @@ html {
 }
 .m-4 {
 	margin: 1.5rem!important
+}
+.table {
+	width: 100%;
+	margin-bottom: 1rem;
+	color: #212529;
+	border-collapse: collapse;
+}
+
+.table td {
+	padding: .75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6
+}
+
+.table tbody+tbody {
+	border-top: 2px solid #dee2e6
+}
+
+.table-sm td {
+	padding: .3rem
+}
+
+.table-hover tbody tr:hover {
+	color: #212529;
+	background-color: rgba(0, 0, 0, .075)
+}
+
+.table-primary,
+.table-primary>td {
+	background-color: #b8daff
+}
+
+.table-primary tbody+tbody,
+.table-primary td {
+	border-color: #7abaff
+}
+
+.table-hover .table-primary:hover {
+	background-color: #9fcdff
+}
+
+.table-hover .table-primary:hover>td {
+	background-color: #9fcdff
+}
+
+.table-dark,
+.table-dark>td {
+	background-color: #c6c8ca
+}
+
+.table-dark tbody+tbody,
+.table-dark td {
+	border-color: #95999c
+}
+
+.table-hover .table-dark:hover {
+	background-color: #b9bbbe
+}
+
+.table-hover .table-dark:hover>td {
+	background-color: #b9bbbe
+}
+
+.table-active,
+.table-active>td {
+	background-color: rgba(0, 0, 0, .075)
+}
+
+.table-hover .table-active:hover {
+	background-color: rgba(0, 0, 0, .075)
+}
+
+.table-hover .table-active:hover>td {
+	background-color: rgba(0, 0, 0, .075)
+}
+
+.table-dark {
+	color: #fff;
+	background-color: #343a40
+}
+
+.table-dark td {
+	border-color: #454d55
+}
+
+.table-dark.table-hover tbody tr:hover {
+	color: #fff;
+	background-color: rgba(255, 255, 255, .075)
+}
+.position-fixed {
+	position: fixed!important
+}
+.w-25 {
+	width: 25%!important
 }

@@ -4,7 +4,7 @@ import { UserService } from '../User.service';
 @Component({
   selector: 'app-meal-plan',
   templateUrl: './meal-plan.component.html',
-  styleUrls: ['./meal-plan.component.css']
+  styleUrls: ['../app.component.css', './meal-plan.component.css']
 })
 export class MealPlanComponent implements OnInit, OnDestroy {
   public navToggled = false;
