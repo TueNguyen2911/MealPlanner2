@@ -5,7 +5,7 @@ import { Router } from '@angular/router'
 @Component({
   selector: 'app-single-meal',
   templateUrl: './single-meal.component.html',
-  styleUrls: ['./single-meal.component.css']
+  styleUrls: ['../app.component.css', './single-meal.component.css']
 })
 export class SingleMealComponent implements OnInit {
   public navToggled = false;
