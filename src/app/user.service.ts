@@ -9,7 +9,7 @@ const helper = new JwtHelperService();
 
 @Injectable()
 export class UserService {
-  api_url: string = 'http://localhost:8080/api' //'https://mealplanapi.herokuapp.com/api';
+  api_url: string = 'http://localhost:2911/api' //'https://mealplanapi.herokuapp.com/api';
   constructor(private http: HttpClient, private router: Router) { }
 
   public getToken(): string {
@@ -22,15 +22,14 @@ export class UserService {
   isAuthenticated(): boolean {
     const token = localStorage.getItem('access_token');
 
-    // Note: We can also use this.jwtHelper.isTokenExpired(token) 
+    // Note: We can also use this.jwtHelper.isTokenExpired(token)
     // to see if the token is expired
 
     if (token) {
-      console.log('token exists');
-      console.log(this.readToken());
+      console.log('user is authenticated')
       return true;
     } else {
-      console.log('no token');
+      console.error('no token');
       return false;
     }
   }
@@ -43,11 +42,10 @@ export class UserService {
     return this.http.get<any>(this.api_url + `/single-post/${id}`);
   }
   login(user: User): Observable<any> {
-    console.log(this.api_url);
     return this.http.post<any>(this.api_url + "/login", user);
   }
   logOut() {
-    localStorage.removeItem('access_token'); 
+    localStorage.removeItem('access_token');
   }
   getImgUrl(img: File): Observable<any> {
     let formData = new FormData();
@@ -55,7 +53,6 @@ export class UserService {
     return this.http.post<any>(this.api_url + "/img-upload", formData);
   }
   addFoodPost(formData: any): Observable<any> {
-    console.log('from addFoodPost ', formData);
     return this.http.post<any>(this.api_url + "/add-post", formData);
   }
   updateInPlan(food_id: any, in_plan: any): Observable<any> {
@@ -68,8 +65,6 @@ export class UserService {
     return this.http.get<any>(this.api_url + "/food-in-plan");
   }
   updateMacro(macro: any) : Observable<any> {
-    console.log('update', macro)
-    
     return this.http.put<any>(this.api_url + "/update-macro", macro);
   }
   getMacro() : Observable<any> {
@@ -80,6 +75,6 @@ export class UserService {
     return this.http.post<any>(this.api_url + "/sign-up", signupForm);
   }
   deletePost(postId: any) : Observable<any> {
-    return this.http.delete<any>(this.api_url + `/deletePost/${postId}`); 
+    return this.http.delete<any>(this.api_url + `/deletePost/${postId}`);
   }
 }

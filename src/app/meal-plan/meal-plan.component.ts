@@ -11,30 +11,28 @@ export class MealPlanComponent implements OnInit, OnDestroy {
   public foodPosts: Array<any>;
   public username: string;
   public macro = {
-    calories: null, 
+    calories: null,
     protein: null,
-    carb: null, 
+    carb: null,
     fat: null
-  }; 
+  };
   constructor(private _userService: UserService) {
     this._userService.getFoodInPlan().subscribe(
       (data) => {
         if(typeof data != "string")
-        this.foodPosts = data; console.log(this.foodPosts)
-      }, 
-      (err) => console.log(err)
+        this.foodPosts = data;
+      },
+      (err) => console.error(err)
     );
     this._userService.getMacro().subscribe(
       (data) => {
-        console.log('macro data', data);
         if(data != null)
-        this.macro = data; 
-        //console.log(this.macro); 
+        this.macro = data;
       },
-      (err) => console.log(err)
+      (err) => console.error(err)
     );
   }
-  logOut() { 
+  logOut() {
     this._userService.logOut();
     window.location.reload();
   }
@@ -49,13 +47,12 @@ export class MealPlanComponent implements OnInit, OnDestroy {
       (msg) => {
         console.log(msg);
         window.location.reload();
-      }, 
-      (err) => console.log(err)
+      },
+      (err) => console.error(err)
     );
-    
+
   }
-  ngOnDestroy(): void { 
-    console.log('yeah');
-    this._userService.updateMacro(this.macro).subscribe(); 
+  ngOnDestroy(): void {
+    this._userService.updateMacro(this.macro).subscribe();
   }
 }

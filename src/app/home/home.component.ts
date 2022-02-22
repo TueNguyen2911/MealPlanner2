@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this._userService.getFoodPosts().subscribe((data) => {
       this.foodPosts = data;
-      console.log(this.foodPosts);
     });
     this.username = this._userService.readToken().username;
 
@@ -34,10 +33,8 @@ export class HomeComponent implements OnInit {
           allClasses.push(cls);
       }
     }
-
-    console.log(allClasses);
   }
-  logOut() { 
+  logOut() {
     this._userService.logOut();
     window.location.reload();
   }

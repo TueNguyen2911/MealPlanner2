@@ -15,14 +15,14 @@ import { Router } from '@angular/router'
 
 export class AddMealComponent implements OnInit {
   public navToggled = false;
-  public ingredients: string[]; 
+  public ingredients: string[];
   public instructions;
   public submitted = false;
   public submitSuccess = false;
   private imgFile: File;
   public imgTemp1_Readonly = false;
   public imgTemp2_Readonly = false;
-  public foodForm: any; 
+  public foodForm: any;
   public selectedImg: ImageSnippet;
   addOnBlur = true;
   public username: string;
@@ -30,7 +30,7 @@ export class AddMealComponent implements OnInit {
   tags: string[] = [];
 
   constructor(private _userService: UserService, private router: Router) { }
-  logOut() { 
+  logOut() {
     this._userService.logOut();
     window.location.reload();
   }
@@ -39,23 +39,22 @@ export class AddMealComponent implements OnInit {
     this.foodForm = new FormGroup({
       imgTemp: new FormControl(null, Validators.required),
       img: new FormControl(null),
-      title: new FormControl('', Validators.required), 
+      title: new FormControl('', Validators.required),
       shortDesc: new FormControl('', Validators.required),
       serving: new FormControl('', Validators.required),
-      calories: new FormControl(null, [Validators.required, Validators.min(0)]), 
-      protein: new FormControl(null, [Validators.required, Validators.min(0)] ), 
-      carb: new FormControl(null, [Validators.required, Validators.min(0)]), 
-      fat: new FormControl(null, [Validators.required, Validators.min(0)]), 
-      ingredients: new FormArray([], [Validators.required]), 
-      instructions: new FormArray([], Validators.required), 
+      calories: new FormControl(null, [Validators.required, Validators.min(0)]),
+      protein: new FormControl(null, [Validators.required, Validators.min(0)] ),
+      carb: new FormControl(null, [Validators.required, Validators.min(0)]),
+      fat: new FormControl(null, [Validators.required, Validators.min(0)]),
+      ingredients: new FormArray([], [Validators.required]),
+      instructions: new FormArray([], Validators.required),
       tags: new FormArray([], Validators.required),
-      in_plan: new FormControl(false), 
+      in_plan: new FormControl(false),
       user_id : new FormControl(this._userService.readToken()._id)
-    }); 
+    });
     this.ingredients = [];
     this.username = this._userService.readToken().username;
-    console.log(this.foodForm);
-    
+
     var allClasses = [];
     var allElements = document.querySelectorAll('*');
     for (var i = 0; i < allElements.length; i++) {
@@ -66,8 +65,6 @@ export class AddMealComponent implements OnInit {
           allClasses.push(cls);
       }
     }
-
-    console.log(allClasses);
   }
   get ingredientControls() {
     return (<FormArray>this.foodForm.get('ingredients')).controls;
@@ -87,7 +84,7 @@ export class AddMealComponent implements OnInit {
     this.submitted = false;
   }
   removeIngredient(): void {
-    (<FormArray>this.foodForm.get('ingredients')).removeAt(this.foodForm.get('ingredients').length - 1); 
+    (<FormArray>this.foodForm.get('ingredients')).removeAt(this.foodForm.get('ingredients').length - 1);
   }
   addInstruction(): void {
     const control = new FormControl(null, [Validators.required]);
@@ -104,7 +101,6 @@ export class AddMealComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.foodForm);
     this.submitted = true;
     if(this.foodForm.status == "VALID") {
       this.submitSuccess = true;
@@ -112,28 +108,25 @@ export class AddMealComponent implements OnInit {
       .then((res) => {
         this.foodForm.removeControl('imgTemp');
         this._userService.addFoodPost(this.foodForm.value).subscribe(
-          (success) => {  
+          (success) => {
             alert(`Creating ${this.foodForm.controls['title'].value} successfully`);
             this.router.navigate(['/single-meal', success.id]);
-          }, 
-          (error) => console.log(error) 
+          },
+          (error) => console.error('Error creating a meal', error)
         );
       })
       .catch((err) => {
-        this.foodForm.status = "INVALID"; 
+        this.foodForm.status = "INVALID";
         this.submitted = false;
         alert(err);
       })
     }
   }
   disableImgInput(imgInput: any) {
-    console.log(this.imgTemp1_Readonly, this.imgTemp2_Readonly)
     if(imgInput.id == "imgTemp1")
-      this.imgTemp2_Readonly = !this.imgTemp2_Readonly; 
+      this.imgTemp2_Readonly = !this.imgTemp2_Readonly;
     else if(imgInput.id == "imgTemp2")
       this.imgTemp1_Readonly = !this.imgTemp1_Readonly;
-    console.log(this.imgTemp1_Readonly, this.imgTemp2_Readonly)
-
   }
   addTag(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -142,11 +135,11 @@ export class AddMealComponent implements OnInit {
       this.tags.push(value);
       (<FormArray>this.foodForm.get('tags')).push(control);
     }
-    if(event.input) 
+    if(event.input)
       event.input.value = '';
   }
   removeTag(tag: string): void {
-    const index = this.tags.indexOf(tag); 
+    const index = this.tags.indexOf(tag);
     if(index >= 0) {
       this.tags.splice(index, 1);
       (<FormArray>this.foodForm.get('tags')).removeAt(index);
@@ -165,41 +158,38 @@ export class AddMealComponent implements OnInit {
     }
   }
   processImg(imgInput: any) : void {
-    const file: File = imgInput.files[0]; 
+    const file: File = imgInput.files[0];
     this.imgFile = file;
   }
   uploadImg() {
     return new Promise((resolve, reject) => {
       if(this.imgFile) {
-        console.log('in');
         const reader = new FileReader();
         reader.addEventListener('load', (event: any) => {
           this.selectedImg = new ImageSnippet(event.target.result, this.imgFile);
-  
+
           this._userService.getImgUrl(this.selectedImg.file).subscribe(
             (res) => {
-              console.log('string: ', res);
               this.foodForm.controls['img'].setValue(res[0].toString());
-              console.log('here');
               resolve('uploaded');
             },
             (err) => {
-              console.log(err);
+              console.error('Error uploading img', err);
               reject(err);
             })
         });
-        
+
         reader.readAsDataURL(this.imgFile);
-        
+
       }
       else if(this.foodForm.controls['imgTemp'].value) {
-        this.foodForm.controls['img'].setValue(this.foodForm.controls['imgTemp'].value); 
-        resolve('got an URL string'); 
+        this.foodForm.controls['img'].setValue(this.foodForm.controls['imgTemp'].value);
+        resolve('got an URL string');
       }
-      else 
+      else
         reject('img upload failed, unknown reason!') //there was no else here, the if condition check was faster than those observables subscription
     })
-    
+
   }
-  
+
 }

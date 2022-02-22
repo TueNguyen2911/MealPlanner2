@@ -1,7 +1,3 @@
-
-
-
-
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,32 +5,32 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Meal Plan</title>
-        
+
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    </head> 
+    </head>
     <body class="sb-nav-fixed" [class.sb-sidenav-toggled]="navToggled">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="index.html">Meal Plan</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" (click)="sideNavToggle()" href="#!"> <i class="fa fa-bars" aria-hidden="true"></i></button>
             <!-- Navbar-->
-            
+
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"> 
+                            <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">
                                 <i class="fa fa-home" aria-hidden="true"></i> {{'\u00A0'}} Home
                             </a>
-                            <a class="nav-link" [routerLink]="['/add-meal']" routerLinkActive="active"> 
+                            <a class="nav-link" [routerLink]="['/add-meal']" routerLinkActive="active">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i> {{'\u00A0'}} Add Meal
                             </a>
-                            <a class="nav-link" [routerLink]="['/meal-plan']"> 
+                            <a class="nav-link" [routerLink]="['/meal-plan']">
                                 <i class="fa fa-cutlery" aria-hidden="true"></i> {{'\u00A0'}} Your Meals
                             </a>
-                            <a class="nav-link" style="cursor: pointer;" (click)="logOut()"> 
+                            <a class="nav-link" style="cursor: pointer;" (click)="logOut()">
                                 <i class="fa fa-sign-out" aria-hidden="true" ></i> {{'\u00A0'}} Log out
                             </a>
                         </div>
@@ -80,15 +76,15 @@
                                                             </li>
                                                         </ol>
                                                     </div>
-                                                        
+
                                                     <div class="right">
                                                         <div>
                                                             <div class="btn btn-primary" (click)="addToPlan()">Add to plan</div>
                                                             <div *ngIf="msg" class="text-success">{{msg}}!</div>
-                                                        </div> 
+                                                        </div>
                                                         <div class="mt-2">
                                                             Servings: {{foodPost.serving}} <br>
-                                                            <label>Nutrion per serving: </label> 
+                                                            <label>Nutrion per serving: </label>
                                                         </div>
                                                         <div>
                                                             <table class="table table-hover">
@@ -129,8 +125,8 @@
                                 </div>
                             </div>
                         </main>
-                
-                        
+
+
                     </div>
                     </main>
             </div>
